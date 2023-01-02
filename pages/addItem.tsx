@@ -19,6 +19,8 @@ const addItem = ({}: Props) => {
   const mintNft = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if(e.target !== e.currentTarget) return;
+
     if (!contract || !address) return;
 
     if (!image) {
@@ -102,8 +104,8 @@ const addItem = ({}: Props) => {
               type="file"
               onChange={(e) => {
                 if (e.target.files?.[0]) {
-                  setPreview(URL.createObjectURL(e.target.files?.[0]));
-                  setImage(e.target.files?.[0]);
+                  setPreview(URL.createObjectURL(e.target.files[0]));
+                  setImage(e.target.files[0]);
                 }
               }}
             />
